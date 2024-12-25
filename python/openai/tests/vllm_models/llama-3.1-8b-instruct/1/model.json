@@ -1,1 +1,7 @@
-{"model": "meta-llama/Meta-Llama-3.1-8B-Instruct", "disable_log_requests": true, "gpu_memory_utilization": 0.9}
+{
+    "model": "Qwen/Qwen2.5-32B-Instruct-GPTQ-Int4",
+    "disable_log_requests": true,
+    "gpu_memory_utilization": 0.95,
+    "enforce_eager": true,
+    "max_model_len": 5000
+}

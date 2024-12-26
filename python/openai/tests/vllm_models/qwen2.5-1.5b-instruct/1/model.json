@@ -1,0 +1,6 @@
+{
+    "model": "Qwen/Qwen2.5-1.5B-Instruct",
+    "disable_log_requests": true,
+    "enforce_eager": true,
+    "device": "cuda:1"
+}

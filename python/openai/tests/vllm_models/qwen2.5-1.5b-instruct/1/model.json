@@ -1,5 +1,5 @@
 {
-    "model": "Qwen/Qwen2.5-1.5B-Instruct",
+    "model": "Qwen/Qwen2.5-Coder-1.5B-Instruct",
     "disable_log_requests": true,
     "pipeline_parallel_size": 1,
     "enforce_eager": true,

@@ -1,7 +1,8 @@
 {
     "model": "Qwen/Qwen2.5-1.5B-Instruct",
     "disable_log_requests": true,
-    "gpu_memory_utilization": 0.30,
+    "tensor_parallel_size": 2,
+    "pipeline_parallel_size": 1,
     "enforce_eager": true,
     "device": "cuda:1"
 }

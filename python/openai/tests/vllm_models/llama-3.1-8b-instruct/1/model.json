@@ -1,9 +1,28 @@
 {
-    "model": "Qwen/Qwen2.5-32B-Instruct-GPTQ-Int4",
-    "disable_log_requests": true,
-    "gpu_memory_utilization": 0.60,
-    "tensor_parallel_size": 2,
-    "pipeline_parallel_size": 1,
-    "enforce_eager": true,
-    "max_model_len": 5000
-}
+    "models": [
+      {
+        "model": "Qwen/Qwen2.5-32B-Instruct-GPTQ-Int4",
+        "disable_log_requests": true,
+        "gpu_memory_utilization": 0.95,  
+        "tensor_parallel_size": 2,
+        "pipeline_parallel_size": 1,
+        "enforce_eager": true,
+        "max_model_len": 5000
+      },
+      {
+        "model": "Qwen/Qwen2.5-1.5B-Instruct",
+        "disable_log_requests": true,
+        "gpu_memory_utilization": 0.30,  
+        "tensor_parallel_size": 1,  
+        "pipeline_parallel_size": 1,
+        "enforce_eager": true
+      }
+    ],
+    "common": {
+      "device": "cuda",
+      "scheduler_policy": "fcfs",
+      "max_num_batched_tokens": 32768,
+      "max_num_seqs": 256
+    }
+  }
+  

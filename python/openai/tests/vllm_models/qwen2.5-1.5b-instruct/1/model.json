@@ -1,6 +1,5 @@
 {
     "model": "Qwen/Qwen2.5-1.5B-Instruct",
     "disable_log_requests": true,
-    "gpu_memory_utilization": 0.3,
     "enforce_eager": true
 }

@@ -105,7 +105,7 @@ class CreateCompletionRequest(BaseModel):
     max_tokens: Optional[conint(ge=0)] = Field(
         4000,
         description="The maximum number of [tokens](/tokenizer) that can be generated in the completion.\n\nThe token count of your prompt plus `max_tokens` cannot exceed the model's context length. [Example Python code](https://cookbook.openai.com/examples/how_to_count_tokens_with_tiktoken) for counting tokens.\n",
-        examples=[16],
+        examples=[4000],
     )
     # TODO: Extension, flesh out description and defaults
     min_tokens: Optional[conint(ge=0)] = Field(
@@ -856,7 +856,7 @@ class CreateChatCompletionRequest(BaseModel):
     )
     # TODO: Consider new max_completion_tokens field in the future: https://platform.openai.com/docs/api-reference/chat/create#chat-create-max_completion_tokens
     max_tokens: Optional[conint(ge=0)] = Field(
-        16,
+        4000,
         description="The maximum number of [tokens](/tokenizer) that can be generated in the chat completion.\n\nThe total length of input tokens and generated tokens is limited by the model's context length. [Example Python code](https://cookbook.openai.com/examples/how_to_count_tokens_with_tiktoken) for counting tokens.\n",
     )
     # TODO: Extension, flesh out description and defaults

@@ -14,7 +14,4 @@
     "disable_sliding_window": false,
     "rope_scaling": {"factor": 2.0},
     "num_scheduler_steps": 2,
-    "multi_step_stream_outputs": true,
-    "device": "cuda:0",
-    "disable_logprobs_during_spec_decoding": false
-}
+    "device": "cuda:0"}

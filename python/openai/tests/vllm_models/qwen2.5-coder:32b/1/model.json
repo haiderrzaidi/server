@@ -7,7 +7,4 @@
     "gpu_memory_utilization": 0.92,  
     "max_num_seqs": 4,
     "enforce_eager": true,
-    "scheduler_delay_factor": 0.1,
-    "rope_scaling": {"factor": 2.0},
-    "num_scheduler_steps": 2,
     "device": "cuda:0"}

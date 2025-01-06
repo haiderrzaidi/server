@@ -25,4 +25,11 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 backend: "vllm"
-instance_group [{kind: KIND_MODEL}]
+instance_group [
+  {
+    count: 1
+    kind: KIND_GPU
+    gpus: [1]
+  }
+]
+

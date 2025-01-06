@@ -1,10 +1,9 @@
 {
     "model": "Qwen/Qwen2.5-32B-Instruct-GPTQ-Int4",
-    "dtype": "float16",  
-    "kv_cache_dtype": "int8",
     "max_model_len": 3072,  
     "pipeline_parallel_size": 1,
     "gpu_memory_utilization": 0.92,  
-    "max_num_seqs": 4,
+    "max_num_seqs": 5,
     "enforce_eager": true,
-    "device": "cuda:0"}
+    "device": "cuda:0"
+}

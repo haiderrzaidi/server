@@ -1,9 +1,9 @@
 {
     "model": "Qwen/Qwen2.5-32B-Instruct-GPTQ-Int4",
     "disable_log_requests": true,
-    "gpu_memory_utilization": 0.95,
+    "gpu_memory_utilization": 0.85,
     "pipeline_parallel_size": 1,
     "enforce_eager": true,
-    "max_model_len": 5000,
+    "max_model_len": 4500,
     "device": "cuda:0"
 }

@@ -11,7 +11,6 @@
     "use_v2_block_manager": true,
     "enable_prefix_caching": true,
     "scheduler_delay_factor": 0.1,
-    "disable_sliding_window": false,
     "rope_scaling": {"factor": 2.0},
     "num_scheduler_steps": 2,
     "device": "cuda:0"}

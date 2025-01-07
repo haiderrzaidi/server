@@ -3,6 +3,7 @@
     "disable_log_requests": true,
     "gpu_memory_utilization": 0.6,
     "pipeline_parallel_size": 1,
+    "max_model_len": 16000,
     "enforce_eager": true,
     "device": "cuda:1"
 }

@@ -1,11 +1,10 @@
 {
     "model": "Qwen/Qwen2.5-Coder-1.5B-Instruct",
     "disable_log_requests": true,
-    "gpu_memory_utilization": 0.50,
+    "gpu_memory_utilization": 0.45,
     "pipeline_parallel_size": 1,
     "enforce_eager": true,
     "max_model_len": 4000,
     "dtype": "float16",
-    "kv-cache-dtype": "fp8",    
     "device": "cuda:1"
 }

@@ -4,6 +4,6 @@
     "gpu_memory_utilization": 0.4,
     "pipeline_parallel_size": 1,
     "enforce_eager": true,
-    "max_model_len": 4000,
+    "max_model_len": 6000,
     "device": "cuda:1"
 }

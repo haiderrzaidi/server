@@ -28,7 +28,6 @@ backend: "vllm"
 instance_group [
   {
     count: 2
-    kind: KIND_GPU
-    gpus: [0,1]
+    kind: KIND_MODEL
   }
 ]

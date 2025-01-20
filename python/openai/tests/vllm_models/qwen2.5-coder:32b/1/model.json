@@ -1,9 +1,19 @@
+// {
+//     "model": "Qwen/Qwen2.5-32B-Instruct-GPTQ-Int4",
+//     "disable_log_requests": true,
+//     "gpu_memory_utilization": 0.92,
+//     "pipeline_parallel_size": 1,
+//     "enforce_eager": true,
+//     "max_model_len": 3600,
+//     "device": "cuda:0"
+// }
 {
     "model": "Qwen/Qwen2.5-32B-Instruct-GPTQ-Int4",
     "disable_log_requests": true,
-    "gpu_memory_utilization": 0.92,
-    "pipeline_parallel_size": 1,
+    "gpu_memory_utilization": 0.80,
+    "tensor_parallel_size": 2,
     "enforce_eager": true,
-    "max_model_len": 3600,
-    "device": "cuda:0"
-}
+    "max_model_len": 12096,  // Adjust this value as needed
+    "quantization": "gptq"
+  }
+  

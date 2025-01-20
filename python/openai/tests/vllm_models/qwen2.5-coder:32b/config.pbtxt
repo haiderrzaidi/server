@@ -26,8 +26,7 @@
 backend: "vllm"
 instance_group [
   {
-    count: 1  # Change from 2 to 1 since we're using tensor parallelism
+    count: 1
     kind: KIND_MODEL
-    gpus: [0, 1]  # Explicitly specify GPUs
   }
 ]

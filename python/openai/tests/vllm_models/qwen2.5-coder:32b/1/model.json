@@ -1,11 +1,10 @@
-
 {
-    "model": "Qwen/Qwen2.5-32B-Instruct-GPTQ-Int4",
-    "disable_log_requests": true,
-    "gpu_memory_utilization": 0.80,
-    "tensor_parallel_size": 2,
-    "enforce_eager": true,
-    "max_model_len": 12096,  
-    "quantization": "gptq"
-  }
-  
+  "model": "Qwen/Qwen2.5-32B-Instruct-GPTQ-Int4",
+  "disable_log_requests": true,
+  "gpu_memory_utilization": 0.80,
+  "tensor_parallel_size": 2,
+  "enforce_eager": true,
+  "max_model_len": 12096,
+  "max_num_batched_tokens": 8192,  
+  "max_num_seqs": 256,            
+}

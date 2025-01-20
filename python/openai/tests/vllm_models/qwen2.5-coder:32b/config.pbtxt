@@ -23,11 +23,11 @@
 # OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
 backend: "vllm"
 instance_group [
   {
-    count: 2
+    count: 1  # Change from 2 to 1 since we're using tensor parallelism
     kind: KIND_MODEL
+    gpus: [0, 1]  # Explicitly specify GPUs
   }
 ]

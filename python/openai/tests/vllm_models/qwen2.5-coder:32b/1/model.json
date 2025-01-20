@@ -4,5 +4,5 @@
   "gpu_memory_utilization": 0.80,
   "tensor_parallel_size": 2,
   "enforce_eager": true,
-  "max_model_len": 12096,      
+  "max_model_len": 12096   
 }

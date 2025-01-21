@@ -26,7 +26,11 @@
 backend: "vllm"
 instance_group [
   {
-    count: 1
+    count: 2
     kind: KIND_MODEL
   }
 ]
+dynamic_batching {
+  preferred_batch_size: [4, 6]
+  max_queue_delay_microseconds: 500
+}

@@ -6,5 +6,5 @@
   "max_num_seqs": 8,               
   "max_num_batched_tokens": 3072,  
   "block_size": 16,                             
-  "enable_chunked_prefill": true,  
+  "enable_chunked_prefill": true
 }

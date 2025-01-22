@@ -1,10 +1,10 @@
 {
   "model": "Qwen/Qwen2.5-32B-Instruct-GPTQ-Int4",
-  "gpu_memory_utilization": 0.83,  
+  "gpu_memory_utilization": 0.80,  
   "tensor_parallel_size": 2,       
-  "max_model_len": 8192,           
-  "max_num_seqs": 8,               
-  "max_num_batched_tokens": 3072,  
+  "max_model_len": 6192,           
+  "max_num_seqs": 4,               
+  "max_num_batched_tokens": 2072,  
   "block_size": 16,                             
   "enable_chunked_prefill": true
 }

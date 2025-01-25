@@ -7,3 +7,6 @@
     "max_model_len": 4000,
     "device": "cuda:1"
 }
+"max_num_seqs": 4,               
+"max_num_batched_tokens": 2072,  
+"block_size": 16,                             

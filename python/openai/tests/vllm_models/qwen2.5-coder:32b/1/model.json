@@ -3,7 +3,6 @@
   "gpu_memory_utilization": 0.6,
   "tensor_parallel_size": 2,
   "max_model_len": 8192,
-  "block_size": 16,
   "enable_chunked_prefill": true,
   "cpu_offload_gb": 2
 }

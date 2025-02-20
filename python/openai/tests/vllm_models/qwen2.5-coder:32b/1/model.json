@@ -2,6 +2,7 @@
   "model": "Qwen/Qwen2.5-32B-Instruct-GPTQ-Int4",
   "gpu_memory_utilization": 0.6,
   "tensor_parallel_size": 2,
+  "enforce_eager": true,
   "max_model_len": 8192,
   "enable_chunked_prefill": true,
   "cpu_offload_gb": 2

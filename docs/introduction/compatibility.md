@@ -1,5 +1,5 @@
 <!--
-# Copyright (c) 2024, NVIDIA CORPORATION. All rights reserved.
+# Copyright (c) 2024-2025, NVIDIA CORPORATION. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions
@@ -31,13 +31,17 @@
 # Release Compatibility Matrix
  1. [Container Name: trtllm-python-py3](#container-name-trtllm-python-py3)
  2. [Container Name: vllm-python-py3](#container-name-vllm-python-py3)
- 3. [ONNX Versions](#onnx-versions)
+ 3. [ONNX Runtime Versions](#onnx-runtime-versions)
 
 ## Container Name: trtllm-python-py3
 
 | Triton release version	 | NGC Tag	 | Python version	 | Torch version | TensorRT version | TensorRT-LLM version | CUDA version | CUDA Driver version | Size |
 | --- | ---  | --- | --- | --- | --- | --- | --- | --- |
-| 24.10 | nvcr.io/nvidia/tritonserver:24.10-trtllm-python-py3 | Python 3.10.12  | 2.4.0a0%2B3bcc3cddb5.nv24.7 | 10.4.0 | 0.14.0 | 12.5.1.007 | 555.42.06 | 21G |
+| 25.02 | nvcr.io/nvidia/tritonserver:25.02-trtllm-python-py3 | Python 3.12.3 | 2.6.0a0%2Becf3bae40a.nv25.1 | 10.8.0.43 | 0.17.0.post1 | 12.8.0.038 | 570.86.10 | 28G |
+| 25.01 | nvcr.io/nvidia/tritonserver:25.01-trtllm-python-py3 | Python 3.12.3  | 2.6.0a0%2Becf3bae40a.nv25.1 | 10.8.0.43 | 0.17.0 | 12.8.0.038 | 570.86.10 | 30G |
+| 24.12 | nvcr.io/nvidia/tritonserver:24.12-trtllm-python-py3 | Python 3.12.3  | 2.6.0a0%2Bdf5bbc09d1.nv24.11 | 10.7.0 | 0.16.0 | 12.6.3 | 560.35.05 | 22G |
+| 24.11 | nvcr.io/nvidia/tritonserver:24.11-trtllm-python-py3 | Python 3.10.12  | 2.5.0a0%2Be000cf0ad9.nv24.10 | 10.6.0 | 0.15.0 | 12.6.3 | 555.42.06 | 24.8G |
+| 24.10 | nvcr.io/nvidia/tritonserver:24.10-trtllm-python-py3 | Python 3.10.12  | 2.4.0a0%2B3bcc3cddb5.nv24.7 | 10.4.0 | 0.14.0 | 12.5.1.007 | 555.42.06 | 23.3G |
 | 24.09 | nvcr.io/nvidia/tritonserver:24.09-trtllm-python-py3 | Python 3.10.12  | 2.4.0a0%2B3bcc3cddb5.nv24.7 | 10.4.0 | 0.13.0 | 12.5.1.007 | 555.42.06 | 21G |
 | 24.08 | nvcr.io/nvidia/tritonserver:24.08-trtllm-python-py3 | Python 3.10.12 | 2.4.0a0%2B3bcc3cddb5.nv24.7 | 10.3.0 | 0.12.0 | 12.5.1.007 | 555.42.06 | 21G |
 | 24.07 | nvcr.io/nvidia/tritonserver:24.07-trtllm-python-py3 | Python 3.10.12 | 2.4.0a0%2B07cecf4168.nv24.5 | 10.1.0 | 0.11.0 | 12.4.1.003 | 550.54.15 | 23G |
@@ -49,7 +53,11 @@
 
 | Triton release version	 | NGC Tag	 | Python version	 | vLLM version | CUDA version | CUDA Driver version | Size |
 | --- | --- | --- | --- | --- | --- | --- |
-| 24.10 | nvcr.io/nvidia/tritonserver:24.10-vllm-python-py3 | Python 3.10.12 | 0.5.5 | 12.6.2.004 | 560.35.03 | 19G |
+| 25.02 | nvcr.io/nvidia/tritonserver:25.02-vllm-python-py3 | Python 3.12.3  | 0.7.0+5e800e3d.nv25.2.cu128 | 12.8.0.038 | 570.86.10 | 22G |
+| 25.01 | nvcr.io/nvidia/tritonserver:25.01-vllm-python-py3 | Python 3.12.3  | 0.6.3.post1 | 12.8.0.038 | 570.86.10 | 23G |
+| 24.12 | nvcr.io/nvidia/tritonserver:24.12-vllm-python-py3 | Python 3.12.3 |  0.5.5 | 12.6.3.004 | 560.35.05 | 20G |
+| 24.11 | nvcr.io/nvidia/tritonserver:24.11-vllm-python-py3 | Python 3.12.3 |  0.5.5 | 12.6.3.001 | 560.35.05 | 22.1G |
+| 24.10 | nvcr.io/nvidia/tritonserver:24.10-vllm-python-py3 | Python 3.10.12 | 0.5.5 | 12.6.2.004 | 560.35.03 | 21G |
 | 24.09 | nvcr.io/nvidia/tritonserver:24.09-vllm-python-py3 | Python 3.10.12 | 0.5.3.post1 | 12.6.1.006 | 560.35.03 | 19G |
 | 24.08 | nvcr.io/nvidia/tritonserver:24.08-vllm-python-py3 | Python 3.10.12  | 0.5.0 post1 | 12.6.0.022 | 560.35.03 | 19G |
 | 24.07 | nvcr.io/nvidia/tritonserver:24.07-vllm-python-py3 | Python 3.10.12  | 0.5.0 post1 | 12.5.1 | 555.42.06 | 19G |
@@ -57,10 +65,14 @@
 | 24.05 | nvcr.io/nvidia/tritonserver:24.05-vllm-python-py3 | Python 3.10.12  | 0.4.0 post1 | 12.4.1 | 550.54.15 | 18G |
 | 24.04 | nvcr.io/nvidia/tritonserver:24.04-vllm-python-py3 | Python 3.10.12  | 0.4.0 post1 | 12.4.1 | 550.54.15 | 17G |
 
-## ONNX Versions
+## ONNX Runtime Versions
 
 | Triton release version	 | ONNX Runtime	 |
 | --- | --- |
+| 25.02 | 1.20.1 |
+| 25.01 | 1.20.1 |
+| 24.12 | 1.20.1 |
+| 24.11 | 1.19.2 |
 | 24.10 | 1.19.2 |
 | 24.09 | 1.19.2 |
 | 24.08 | 1.18.1 |

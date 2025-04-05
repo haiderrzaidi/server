@@ -1,4 +1,4 @@
-// Copyright 2019-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+// Copyright 2019-2025, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
@@ -84,11 +84,15 @@ struct Options {
   SslOptions ssl_;
   KeepAliveOptions keep_alive_;
   grpc_compression_level infer_compression_level_{GRPC_COMPRESS_LEVEL_NONE};
+  // The number of gRPC inference handler threads. Useful for
+  // throughput tuning of models that are request handling bounded.
+  int infer_thread_count_{2};
   // The maximum number of inference request/response objects that
   // remain allocated for reuse. As long as the number of in-flight
   // requests doesn't exceed this value there will be no
   // allocation/deallocation of request/response objects.
   int infer_allocation_pool_size_{8};
+  int max_response_pool_size_{INT_MAX};
   RestrictedFeatures restricted_protocols_;
   std::string forward_header_pattern_;
 };

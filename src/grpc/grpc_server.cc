@@ -1,4 +1,4 @@
-// Copyright 2019-2024, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+// Copyright 2019-2025, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
@@ -61,8 +61,6 @@
 #ifdef TRITON_ENABLE_TRACING
 #include "../tracer.h"
 #endif  // TRITON_ENABLE_TRACING
-
-#define REGISTER_GRPC_INFER_THREAD_COUNT 2
 
 namespace triton { namespace server { namespace grpc {
 
@@ -2390,13 +2388,13 @@ Server::Server(
   // Handler for model inference requests.
   std::pair<std::string, std::string> restricted_kv =
       options.restricted_protocols_.Get(RestrictedCategory::INFERENCE);
-  for (int i = 0; i < REGISTER_GRPC_INFER_THREAD_COUNT; ++i) {
+  for (int i = 0; i < options.infer_thread_count_; ++i) {
     model_infer_handlers_.emplace_back(new ModelInferHandler(
         "ModelInferHandler", tritonserver_, trace_manager_, shm_manager_,
         &service_, model_infer_cq_.get(),
         options.infer_allocation_pool_size_ /* max_state_bucket_count */,
-        options.infer_compression_level_, restricted_kv,
-        options.forward_header_pattern_));
+        options.max_response_pool_size_, options.infer_compression_level_,
+        restricted_kv, options.forward_header_pattern_));
   }
 
   // Handler for streaming inference requests. Keeps one handler for streaming
@@ -2405,8 +2403,8 @@ Server::Server(
       "ModelStreamInferHandler", tritonserver_, trace_manager_, shm_manager_,
       &service_, model_stream_infer_cq_.get(),
       options.infer_allocation_pool_size_ /* max_state_bucket_count */,
-      options.infer_compression_level_, restricted_kv,
-      options.forward_header_pattern_));
+      options.max_response_pool_size_, options.infer_compression_level_,
+      restricted_kv, options.forward_header_pattern_));
 }
 
 Server::~Server()
@@ -2470,8 +2468,12 @@ Server::GetOptions(Options& options, UnorderedMapType& options_map)
       static_cast<grpc_compression_level>(infer_compression_level_key);
 
   RETURN_IF_ERR(GetValue(
+      options_map, "infer_thread_count", &options.infer_thread_count_));
+  RETURN_IF_ERR(GetValue(
       options_map, "infer_allocation_pool_size",
       &options.infer_allocation_pool_size_));
+  RETURN_IF_ERR(GetValue(
+      options_map, "max_response_pool_size", &options.max_response_pool_size_));
   RETURN_IF_ERR(GetValue(
       options_map, "forward_header_pattern", &options.forward_header_pattern_));
 

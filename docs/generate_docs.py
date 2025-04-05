@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-# Copyright 2024, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+# Copyright 2024-2025, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions
@@ -41,11 +41,11 @@ server_docs_abspath = os.path.join(server_abspath, "docs")
 """
 TODO: Needs to handle cross-branch linkage.
 
-For example, server/docs/user_guide/architecture.md on branch 24.11 links to
+For example, server/docs/user_guide/architecture.md on branch 24.12 links to
 server/docs/user_guide/model_analyzer.md on main branch. In this case, the
 hyperlink of model_analyzer.md should be a URL instead of relative path.
 
-Another example can be server/docs/user_guide/model_analyzer.md on branch 24.11
+Another example can be server/docs/user_guide/model_analyzer.md on branch 24.12
 links to a file in server repo with relative path. Currently all URLs are
 hardcoded to main branch. We need to make sure that the URL actually points to the
 correct branch. We also need to handle cases like deprecated or removed files from
@@ -142,6 +142,17 @@ def clone_from_github(repo, tag, org):
     repo_url = f"https://github.com/{org}/{repo}.git"
     # Construct the git clone command
     if tag:
+        if re.match("model_navigator", repo):
+            tag = "main"
+
+        if re.match("tensorrtllm_backend", repo):
+            tag = os.getenv("TENSORRTLLM_BACKEND_REPO_TAG", "main")
+            token = os.getenv("CI_JOB_TOKEN")
+            host_fqdn = os.getenv("CI_SERVER_FQDN")
+            repo_url = (
+                f"https://gitlab-ci-token:{token}@{host_fqdn}/dl/triton/{repo}.git"
+            )
+
         clone_command = [
             "git",
             "clone",

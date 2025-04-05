@@ -1,4 +1,4 @@
-// Copyright 2022-2024, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+// Copyright 2022-2025, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
@@ -305,7 +305,9 @@ enum TritonOptionId {
   OPTION_REUSE_GRPC_PORT,
   OPTION_GRPC_ADDRESS,
   OPTION_GRPC_HEADER_FORWARD_PATTERN,
+  OPTION_GRPC_INFER_THREAD_COUNT,
   OPTION_GRPC_INFER_ALLOCATION_POOL_SIZE,
+  OPTION_GRPC_MAX_RESPONSE_POOL_SIZE,
   OPTION_GRPC_USE_SSL,
   OPTION_GRPC_USE_SSL_MUTUAL,
   OPTION_GRPC_SERVER_CERT,
@@ -530,12 +532,21 @@ TritonParser::SetupOptions()
        "The regular expression pattern that will be used for forwarding GRPC "
        "headers as inference request parameters."});
   grpc_options_.push_back(
+      {OPTION_GRPC_INFER_THREAD_COUNT, "grpc-infer-thread-count",
+       Option::ArgInt,
+       "The number of gRPC inference handler threads. Default is 2."});
+  grpc_options_.push_back(
       {OPTION_GRPC_INFER_ALLOCATION_POOL_SIZE,
        "grpc-infer-allocation-pool-size", Option::ArgInt,
-       "The maximum number of inference request/response objects that remain "
-       "allocated for reuse. As long as the number of in-flight requests "
-       "doesn't exceed this value there will be no allocation/deallocation of "
-       "request/response objects."});
+       "The maximum number of states (inference request/response queues) that "
+       "remain allocated for reuse. As long as the number of in-flight "
+       "requests doesn't exceed this value there will be no "
+       "allocation/deallocation of request/response objects."});
+  grpc_options_.push_back(
+      {OPTION_GRPC_MAX_RESPONSE_POOL_SIZE, "grpc-max-response-pool-size",
+       Option::ArgInt,
+       "The maximum number of inference response objects that can remain "
+       "allocated in the response queue at any given time."});
   grpc_options_.push_back(
       {OPTION_GRPC_USE_SSL, "grpc-use-ssl", Option::ArgBool,
        "Use SSL authentication for GRPC requests. Default is false."});
@@ -1435,8 +1446,25 @@ TritonParser::Parse(int argc, char** argv)
         case OPTION_GRPC_ADDRESS:
           lgrpc_options.socket_.address_ = optarg;
           break;
+        case OPTION_GRPC_INFER_THREAD_COUNT:
+          lgrpc_options.infer_thread_count_ = ParseOption<int>(optarg);
+          if (lgrpc_options.infer_thread_count_ < 2 ||
+              lgrpc_options.infer_thread_count_ > 128) {
+            throw ParseException(
+                "invalid argument for --grpc_infer_thread_count. Must be in "
+                "the range 2 to 128.");
+          }
+          break;
         case OPTION_GRPC_INFER_ALLOCATION_POOL_SIZE:
           lgrpc_options.infer_allocation_pool_size_ = ParseOption<int>(optarg);
+          break;
+        case OPTION_GRPC_MAX_RESPONSE_POOL_SIZE:
+          lgrpc_options.max_response_pool_size_ = ParseOption<int>(optarg);
+          if (lgrpc_options.max_response_pool_size_ <= 0) {
+            throw ParseException(
+                "Error: --grpc-max-response-pool-size must be greater "
+                "than 0.");
+          }
           break;
         case OPTION_GRPC_USE_SSL:
           lgrpc_options.ssl_.use_ssl_ = ParseOption<bool>(optarg);
